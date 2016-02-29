@@ -115,7 +115,7 @@ class Synology_Abstract
         $ch = curl_init();
         
         if ($httpMethod !== 'post') {
-            $url = $this->_getBaseUrl() . $path . '?' . http_build_query($params);
+            $url = $this->_getBaseUrl() . $path . '?' . http_build_query($params, null, '&', PHP_QUERY_RFC3986);
             $this->log($url, 'Requested Url');
             
             curl_setopt($ch, CURLOPT_URL, $url);
